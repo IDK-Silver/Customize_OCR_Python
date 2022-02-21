@@ -120,20 +120,15 @@ class School_Data_ORC:
         # print(ocr_image(cv2.cvtColor(numpy.array(image_phone), cv2.COLOR_RGB2BGR)))
         # print(ocr_image(cv2.cvtColor(numpy.array(image_home), cv2.COLOR_RGB2BGR)))
         data = list()
+        for text in ocr_part:
+            text_list = [line[1][0] for line in text]
+            for line in text_list:
+                # data.append(OpenCC("s2tw").convert(line))
+                data.append(line)
         if console_mod:
             clear_console()
 
             print("圖片名稱：%s" % image_path.split(".")[0])
-
-            # for text in ocr_part:
-            #     print([line[1][0] for line in text])
-
-            for text in ocr_part:
-                text_list = [line[1][0] for line in text]
-                for line in text_list:
-                    data.append(line)
-                    # data.append(OpenCC("s2tw").convert(line))
-                    # print(OpenCC("s2tw").convert(line))
             print("姓名   ：%s" % data[0])
             print("電話   ：%s" % data[1])
             print("住址   ：%s" % data[2])
@@ -148,4 +143,8 @@ class School_Data_ORC:
             else:
                 return False
         else:
-            return data
+            result_data = list()
+            result_data.append(data)
+            images = [image_name, image_phone, image_home]
+            result_data.append(images)
+            return result_data

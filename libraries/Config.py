@@ -1,6 +1,7 @@
 import json
 import os
 
+
 class Global:
     orc_folder = os.path.join(os.path.realpath("./"), "orc_folder")
     failed_folder = os.path.join(os.path.realpath(""), "failed_image")
@@ -54,6 +55,23 @@ class Key:
         class orc_folder:
             key = "orc_folder"
 
+    class excel:
+        key = "excel"
+
+        class col_name:
+            key = "col_name"
+
+        class col_phone:
+            key = "col_phone"
+
+        class col_home:
+            key = "col_home"
+
+        class col_folder:
+            key = "col_folder"
+
+        class col_filename:
+            key = "col_filename"
     def get_default_json(self):
         data_json = dict()
         data_json[self.types.key] = []
