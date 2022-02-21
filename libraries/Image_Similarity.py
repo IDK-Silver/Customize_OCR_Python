@@ -1,11 +1,5 @@
 from functools import reduce
-
-import cv2
 from PIL import Image
-from matplotlib import pyplot as plt
-
-import libraries.School_Data_ORC
-import libraries.Config
 
 
 # 計算圖片的局部哈希值--pHash
@@ -18,7 +12,7 @@ def phash(img):
     avg = reduce(lambda x, y: x + y, img.getdata()) / 64.
     hash_value = reduce(lambda x, y: x | (y[1] << y[0]), enumerate(map(lambda i: 0 if i < avg else 1, img.getdata())),
                         0)
-    print(hash_value)
+    print("Check Image Hash：%d" % hash_value)
     return hash_value
 
 
@@ -30,7 +24,7 @@ def hamming_distance(a, b):
     :return: 返回兩個圖片hash值的漢明距離
     """
     hm_distance = bin(a ^ b).count('1')
-    print(hm_distance)
+    print("hamming_distance：%d" % hm_distance)
     return hm_distance
 
 

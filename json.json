@@ -1,2 +1,2 @@
-{"types": [{"name_crop_info": [620, 145, 1040, 234], "phone_crop_info": [625, 380, 1020, 465], "home_crop_info": [260, 430, 1030, 530], "check_crop_info": [2820, 560, 3500, 2400]}, {"name_crop_info": [515, 95, 948, 165], "phone_crop_info": [515, 305, 930, 360], "home_crop_info": [188, 340, 940, 430],
+{"types": [{"name_crop_info": [625, 145, 1040, 234], "phone_crop_info": [625, 380, 1020, 465], "home_crop_info": [260, 430, 1030, 530], "check_crop_info": [2820, 560, 3500, 2400]}, {"name_crop_info": [515, 95, 948, 165], "phone_crop_info": [515, 305, 930, 360], "home_crop_info": [188, 340, 940, 430],
      "check_crop_info": [2820, 560, 3500, 2400]}], "folder": {"failed_image": "failed_image"}}

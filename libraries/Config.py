@@ -1,12 +1,10 @@
 import json
 import os
-import libraries.School_Data_ORC
-
 
 class Global:
-    orc_folder = os.path.join(os.path.realpath(""), "orc_folder")
-    failed_folder = os.path.join(os.path.realpath(""), "failed_folder")
-    success_folder = os.path.join(os.path.realpath(""), "success_folder")
+    orc_folder = os.path.join(os.path.realpath("./"), "orc_folder")
+    failed_folder = os.path.join(os.path.realpath(""), "failed_image")
+    success_folder = os.path.join(os.path.realpath(""), "success_image")
     check_folder = os.path.join(os.path.realpath(""), "check_image")
 
 
