@@ -45,19 +45,26 @@ class QtWindows(QMainWindow):
         # check file is exit
         if not os.path.exists(self.now_image_path):
             print("can't find file")
+            QMessageBox.information(self, '通知', '檔案不存在或是未識別檔案')
             return
 
-        # move file to (success / failed) folder
+        # auto write data to excel
+        if self.ui.checkBox_auto_write2excel.checkState():
+            # noinspection PyBroadException
+            try:
+                print("write excel data")
+                if self.write_data2excel() is False:
+                    return
+            except Exception:
+                QMessageBox.information(self, '通知', '寫入失敗')
+                return
 
+        # move file to (success / failed) folder
         # noinspection PyBroadException
         try:
             shutil.move(self.now_image_path, Config.Global.success_folder)
         except Exception:
             os.remove(self.now_image_path)
-
-        if self.ui.checkBox_auto_write2excel.checkState():
-            print("write excel data")
-            self.write_data2excel()
 
         # clear app info
         self.clear_all_info()
@@ -66,6 +73,7 @@ class QtWindows(QMainWindow):
         # check file is exit
         if not os.path.exists(self.now_image_path):
             print("can't find file")
+            QMessageBox.information(self, '通知', '檔案不存在或是未識別檔案')
             return
 
         # move file to (success / failed) folder
@@ -124,8 +132,12 @@ class QtWindows(QMainWindow):
         self.ui.label_image_home.setPixmap(data_image[2])
 
     def choose_excel_path(self):
-        self.excel_path = QFileDialog.getOpenFileName(self, "選取Excel檔", os.path.join(QDir.homePath(), "Documents"),
-                                                      "Excel檔 (*.xlsx)")[0]
+        path = QFileDialog.getOpenFileName(self, "選取Excel檔", os.path.join(QDir.homePath(), "Documents"),
+                                           "Excel檔 (*.xlsx)")[0]
+        if path == "" or path is None:
+            pass
+        else:
+            self.excel_path = path
 
     def write_data2excel(self):
         excel_config = Config.Config_Json(Config.Global.json_filepath).read(Config.Key.excel.key)
@@ -133,12 +145,14 @@ class QtWindows(QMainWindow):
         excel.load_file(self.excel_path, '工作表1')
         index = excel.search_name_index(self.ui.lineEdit_text_name.text())
         if index is False:
-            return
+            QMessageBox.information(self, '通知', 'Excel找不到資料')
+            return False
         excel.write_data(excel_config[Config.Key.excel.col_name.key] + str(index), self.ui.lineEdit_text_name.text())
         excel.write_data(excel_config[Config.Key.excel.col_phone.key] + str(index), self.ui.lineEdit_text_phone.text())
         excel.write_data(excel_config[Config.Key.excel.col_home.key] + str(index), self.ui.lineEdit_text_home.text())
         excel.write_data(excel_config[Config.Key.excel.col_folder.key] + str(index), self.ui.lineEdit_foldername.text())
-        excel.write_data(excel_config[Config.Key.excel.col_filename.key] + str(index), self.ui.label_text_filename.text())
+        excel.write_data(excel_config[Config.Key.excel.col_filename.key] + str(index),
+                         self.ui.label_text_filename.text())
         excel.save_excel()
 
 

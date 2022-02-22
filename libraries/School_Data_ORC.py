@@ -97,7 +97,6 @@ class School_Data_ORC:
         # plt.imshow(image_home)
         # plt.show()
 
-
         ocr_part = list()
 
         # make image to thresh binary

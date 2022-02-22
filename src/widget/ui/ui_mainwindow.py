@@ -178,6 +178,7 @@ class Ui_MainWindow(object):
 
         self.lineEdit_foldername = QLineEdit(self.groupBox_3)
         self.lineEdit_foldername.setObjectName(u"lineEdit_foldername")
+        self.lineEdit_foldername.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
 
         self.gridLayout_7.addWidget(self.lineEdit_foldername, 1, 1, 1, 1)
 
@@ -249,7 +250,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"\u6e2c\u8a66\u5de5\u5177", None))
-        self.actionOpenFile.setText(QCoreApplication.translate("MainWindow", u"OpenFile", None))
+        self.actionOpenFile.setText(QCoreApplication.translate("MainWindow", u"\u958b\u555f\u6a94\u6848", None))
         self.label_2.setText(QCoreApplication.translate("MainWindow", u"\u6a94\u6848\u540d\u7a31\uff1a", None))
         self.label_text_filename.setText(QCoreApplication.translate("MainWindow", u"None", None))
         self.groupBox_4.setTitle("")
@@ -262,6 +263,7 @@ class Ui_MainWindow(object):
         self.text_home.setText(QCoreApplication.translate("MainWindow", u"\u4f4f\u5740", None))
         self.groupBox_3.setTitle(QCoreApplication.translate("MainWindow", u"\u624b\u52d5\u8cc7\u6599", None))
         self.label.setText(QCoreApplication.translate("MainWindow", u"\u8cc7\u6599\u593e\u540d\u7a31\uff1a", None))
+        self.lineEdit_foldername.setText(QCoreApplication.translate("MainWindow", u"00", None))
         self.checkBox_auto_write2excel.setText(QCoreApplication.translate("MainWindow", u"\u6b63\u78ba\u6642\u81ea\u52d5\u8f38\u5165", None))
         self.groupBox_2.setTitle(QCoreApplication.translate("MainWindow", u"\u6309\u9215", None))
         self.pushButton_yes.setText(QCoreApplication.translate("MainWindow", u"\u8cc7\u6599\u6b63\u78ba", None))

@@ -287,7 +287,14 @@
                </widget>
               </item>
               <item row="1" column="1">
-               <widget class="QLineEdit" name="lineEdit_foldername"/>
+               <widget class="QLineEdit" name="lineEdit_foldername">
+                <property name="text">
+                 <string>00</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+               </widget>
               </item>
               <item row="0" column="0">
                <widget class="QCheckBox" name="checkBox_auto_write2excel">
@@ -373,7 +380,7 @@
   </widget>
   <action name="actionOpenFile">
    <property name="text">
-    <string>OpenFile</string>
+    <string>開啟檔案</string>
    </property>
   </action>
  </widget>

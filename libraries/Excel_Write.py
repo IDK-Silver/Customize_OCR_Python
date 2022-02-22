@@ -29,18 +29,19 @@ class Excel_Write:
                                         max_col=col_dict[config[Key.excel.col_name.key]]):
             col_index = col_index + 1
             for cell in row:
-                print(cell.value)
                 if cell.value == name:
                     return col_index
         return False
 
     def write_data(self, name_index, value):
-        print(name_index)
-        print(value)
         self.sheet[name_index] = value
 
     def save_excel(self):
-        self.wb.save(self.excel_filepath)
+        try:
+            self.wb.save(self.excel_filepath)
+            return True
+        except:
+            return False
 
 
 if __name__ == "__main__":
@@ -52,14 +53,14 @@ if __name__ == "__main__":
     excel.write_data(test_config[Key.excel.col_name.key] + str(index), "asd")
     excel.save_excel()
 
-# # 讀取 Excel 檔案
-# wb = load_workbook('test.xlsx')
-#
-# config = Config_Json("json.json").read(Key.excel.key)
-#
-# sheet = wb['工作表1']
+    # # 讀取 Excel 檔案
+    # wb = load_workbook('test.xlsx')
+    #
+    # config = Config_Json("json.json").read(Key.excel.key)
+    #
+    # sheet = wb['工作表1']
 
-# for row in sheet.iter_rows(min_row=2, min_col=col_dict[config[Key.excel.col_name.key]],
-#                            max_col=col_dict[config[Key.excel.col_name.key]]):
-#     for cell in row:
-#         print(cell.value)
+    # for row in sheet.iter_rows(min_row=2, min_col=col_dict[config[Key.excel.col_name.key]],
+    #                            max_col=col_dict[config[Key.excel.col_name.key]]):
+    #     for cell in row:
+    #         print(cell.value)
