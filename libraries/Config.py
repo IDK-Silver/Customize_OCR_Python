@@ -7,6 +7,7 @@ class Global:
     failed_folder = os.path.join(os.path.realpath(""), "failed_image")
     success_folder = os.path.join(os.path.realpath(""), "success_image")
     check_folder = os.path.join(os.path.realpath(""), "check_image")
+    json_filepath = os.path.join(os.path.realpath(""), "json.json")
 
 
 class Config_Json:
@@ -72,6 +73,7 @@ class Key:
 
         class col_filename:
             key = "col_filename"
+
     def get_default_json(self):
         data_json = dict()
         data_json[self.types.key] = []

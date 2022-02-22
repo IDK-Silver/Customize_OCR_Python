@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1028</width>
-    <height>378</height>
+    <height>503</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -269,9 +269,9 @@
             <string>手動資料</string>
            </property>
            <layout class="QGridLayout" name="gridLayout_3">
-            <item row="1" column="0">
+            <item row="0" column="0">
              <layout class="QGridLayout" name="gridLayout_7">
-              <item row="0" column="0">
+              <item row="1" column="0">
                <widget class="QLabel" name="label">
                 <property name="font">
                  <font>
@@ -286,8 +286,15 @@
                 </property>
                </widget>
               </item>
-              <item row="0" column="1">
-               <widget class="QSpinBox" name="spinBox_folder_name"/>
+              <item row="1" column="1">
+               <widget class="QLineEdit" name="lineEdit_foldername"/>
+              </item>
+              <item row="0" column="0">
+               <widget class="QCheckBox" name="checkBox_auto_write2excel">
+                <property name="text">
+                 <string>正確時自動輸入</string>
+                </property>
+               </widget>
               </item>
              </layout>
             </item>
@@ -344,6 +351,13 @@
      <height>25</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menu">
+    <property name="title">
+     <string>檔案</string>
+    </property>
+    <addaction name="actionOpenFile"/>
+   </widget>
+   <addaction name="menu"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <widget class="QToolBar" name="toolBar">
@@ -357,6 +371,11 @@
     <bool>false</bool>
    </attribute>
   </widget>
+  <action name="actionOpenFile">
+   <property name="text">
+    <string>OpenFile</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections/>

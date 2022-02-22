@@ -76,6 +76,7 @@ class School_Data_ORC:
 
         # crop phone part image
         image_phone = pil_image.crop(config_types[image_type][Config.Key.types.struct_datas.phone_crop_info])
+        # image_phone = image_phone.filter(ImageFilter.BLUR)
 
         # crop home part image
         image_home = pil_image.crop(config_types[image_type][Config.Key.types.struct_datas.home_crop_info])
@@ -109,7 +110,7 @@ class School_Data_ORC:
         # phone part image
         img_binary = \
             cv2.threshold(cv2.cvtColor(numpy.asarray(image_phone), cv2.COLOR_RGB2BGR), 128, 255, cv2.THRESH_BINARY)[1]
-        ocr_part.append(self.ocr_image(cv2.cvtColor(numpy.array(img_binary), cv2.COLOR_RGB2BGR)))
+        ocr_part.append(self.ocr_image(cv2.cvtColor(numpy.array(image_phone), cv2.COLOR_RGB2BGR)))
 
         # home part image
         img_binary = \

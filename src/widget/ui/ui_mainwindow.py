@@ -11,20 +11,24 @@
 from PySide6.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
     QMetaObject, QObject, QPoint, QRect,
     QSize, QTime, QUrl, Qt)
-from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
-    QFont, QFontDatabase, QGradient, QIcon,
-    QImage, QKeySequence, QLinearGradient, QPainter,
-    QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QGridLayout, QGroupBox, QHBoxLayout,
-    QLabel, QLineEdit, QMainWindow, QMenuBar,
-    QPushButton, QSizePolicy, QSpacerItem, QSpinBox,
-    QStatusBar, QToolBar, QVBoxLayout, QWidget)
+from PySide6.QtGui import (QAction, QBrush, QColor, QConicalGradient,
+    QCursor, QFont, QFontDatabase, QGradient,
+    QIcon, QImage, QKeySequence, QLinearGradient,
+    QPainter, QPalette, QPixmap, QRadialGradient,
+    QTransform)
+from PySide6.QtWidgets import (QApplication, QCheckBox, QGridLayout, QGroupBox,
+    QHBoxLayout, QLabel, QLineEdit, QMainWindow,
+    QMenu, QMenuBar, QPushButton, QSizePolicy,
+    QSpacerItem, QStatusBar, QToolBar, QVBoxLayout,
+    QWidget)
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(1028, 378)
+        MainWindow.resize(1028, 503)
+        self.actionOpenFile = QAction(MainWindow)
+        self.actionOpenFile.setObjectName(u"actionOpenFile")
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.verticalLayout = QVBoxLayout(self.centralwidget)
@@ -170,15 +174,20 @@ class Ui_MainWindow(object):
         self.label.setFont(font3)
         self.label.setAlignment(Qt.AlignCenter)
 
-        self.gridLayout_7.addWidget(self.label, 0, 0, 1, 1)
+        self.gridLayout_7.addWidget(self.label, 1, 0, 1, 1)
 
-        self.spinBox_folder_name = QSpinBox(self.groupBox_3)
-        self.spinBox_folder_name.setObjectName(u"spinBox_folder_name")
+        self.lineEdit_foldername = QLineEdit(self.groupBox_3)
+        self.lineEdit_foldername.setObjectName(u"lineEdit_foldername")
 
-        self.gridLayout_7.addWidget(self.spinBox_folder_name, 0, 1, 1, 1)
+        self.gridLayout_7.addWidget(self.lineEdit_foldername, 1, 1, 1, 1)
+
+        self.checkBox_auto_write2excel = QCheckBox(self.groupBox_3)
+        self.checkBox_auto_write2excel.setObjectName(u"checkBox_auto_write2excel")
+
+        self.gridLayout_7.addWidget(self.checkBox_auto_write2excel, 0, 0, 1, 1)
 
 
-        self.gridLayout_3.addLayout(self.gridLayout_7, 1, 0, 1, 1)
+        self.gridLayout_3.addLayout(self.gridLayout_7, 0, 0, 1, 1)
 
         self.groupBox_2 = QGroupBox(self.groupBox_3)
         self.groupBox_2.setObjectName(u"groupBox_2")
@@ -220,6 +229,8 @@ class Ui_MainWindow(object):
         self.menubar = QMenuBar(MainWindow)
         self.menubar.setObjectName(u"menubar")
         self.menubar.setGeometry(QRect(0, 0, 1028, 25))
+        self.menu = QMenu(self.menubar)
+        self.menu.setObjectName(u"menu")
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QStatusBar(MainWindow)
         self.statusbar.setObjectName(u"statusbar")
@@ -228,6 +239,9 @@ class Ui_MainWindow(object):
         self.toolBar.setObjectName(u"toolBar")
         MainWindow.addToolBar(Qt.TopToolBarArea, self.toolBar)
 
+        self.menubar.addAction(self.menu.menuAction())
+        self.menu.addAction(self.actionOpenFile)
+
         self.retranslateUi(MainWindow)
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -235,6 +249,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"\u6e2c\u8a66\u5de5\u5177", None))
+        self.actionOpenFile.setText(QCoreApplication.translate("MainWindow", u"OpenFile", None))
         self.label_2.setText(QCoreApplication.translate("MainWindow", u"\u6a94\u6848\u540d\u7a31\uff1a", None))
         self.label_text_filename.setText(QCoreApplication.translate("MainWindow", u"None", None))
         self.groupBox_4.setTitle("")
@@ -247,10 +262,12 @@ class Ui_MainWindow(object):
         self.text_home.setText(QCoreApplication.translate("MainWindow", u"\u4f4f\u5740", None))
         self.groupBox_3.setTitle(QCoreApplication.translate("MainWindow", u"\u624b\u52d5\u8cc7\u6599", None))
         self.label.setText(QCoreApplication.translate("MainWindow", u"\u8cc7\u6599\u593e\u540d\u7a31\uff1a", None))
+        self.checkBox_auto_write2excel.setText(QCoreApplication.translate("MainWindow", u"\u6b63\u78ba\u6642\u81ea\u52d5\u8f38\u5165", None))
         self.groupBox_2.setTitle(QCoreApplication.translate("MainWindow", u"\u6309\u9215", None))
         self.pushButton_yes.setText(QCoreApplication.translate("MainWindow", u"\u8cc7\u6599\u6b63\u78ba", None))
         self.pushButton_no.setText(QCoreApplication.translate("MainWindow", u"\u8cc7\u6599\u932f\u8aa4", None))
         self.pushButton_start.setText(QCoreApplication.translate("MainWindow", u"\u958b\u59cb\u8b58\u5225", None))
+        self.menu.setTitle(QCoreApplication.translate("MainWindow", u"\u6a94\u6848", None))
         self.toolBar.setWindowTitle(QCoreApplication.translate("MainWindow", u"toolBar", None))
     # retranslateUi
 
