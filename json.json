@@ -62,5 +62,8 @@
     "col_home": "M",
     "col_folder": "J",
     "col_filename": "K"
+  },
+  "error_word_dict": {
+    "Q": "0"
   }
 }

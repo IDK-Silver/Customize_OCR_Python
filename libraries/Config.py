@@ -74,6 +74,9 @@ class Key:
         class col_filename:
             key = "col_filename"
 
+    class error_word_dict:
+        key = "error_word_dict"
+
     def get_default_json(self):
         data_json = dict()
         data_json[self.types.key] = []

@@ -116,8 +116,10 @@ class QtWindows(QMainWindow):
         datas = data_orc.get_orc_text(os.path.realpath(os.path.join(Config.Global.orc_folder, image_path)), False)
         data_text = datas[0]
         data_image = datas[1]
+
+        # set label text
         self.ui.lineEdit_text_name.setText(data_text[0])
-        self.ui.lineEdit_text_phone.setText(data_text[1])
+        self.ui.lineEdit_text_phone.setText(self.fix_error_word(data_text[1]))
         self.ui.lineEdit_text_home.setText(data_text[2])
 
         for index, image in enumerate(data_image):
@@ -154,6 +156,18 @@ class QtWindows(QMainWindow):
         excel.write_data(excel_config[Config.Key.excel.col_filename.key] + str(index),
                          self.ui.label_text_filename.text())
         excel.save_excel()
+
+    def fix_error_word(self, err_str):
+        result_str = str()
+        error_word_dict = Config.Config_Json(Config.Global.json_filepath).read(Config.Key.error_word_dict.key)
+        print(error_word_dict)
+        for index, char in enumerate(err_str):
+            fix_char = error_word_dict.get(char)
+            if fix_char is None:
+                result_str = result_str + char
+            else:
+                result_str = result_str + fix_char
+        return result_str
 
 
 if __name__ == "__main__":
