@@ -1,2 +1,2 @@
-# lcvs_auto_ocr
+# 文字辨識系統
  
